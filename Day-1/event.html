@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件添加</title>
+</head>
+<style>
+    .one{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+    .active{
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id="hjy">
+        <input type="button" value="click" @click="n++">
+        <input type="button" value="click" @click="add()">
+        <input type="button" value="click" @click="add(2)">
+
+        <div>
+            {{n}}
+        </div>
+
+        <div :class="['one',{active:isActive}]"
+             @mouseenter="enter" @mouseleave="leave">
+        </div>
+
+        <div @click="fn">
+        <div @click.stop="fn1">s1</div>
+        <div @click="fn2($event)">s2</div>
+        </div>
+        //阻止接
+        <form action="" @submit.prevent>
+            <input type="button">
+        </form>
+        //阻止传
+        <div class="box" @click.self.onece="fn">
+            <div class="item"></div>
+        </div>
+    </div>
+</body>
+<!--引入Sc-->
+    <script src="../vue.js"></script>
+    <script>
+    //1.表达式
+    //2.在methods 中定义一个方法 传入方法名
+        // 定义形参 事件对象
+    //3.methods 中定义一个方法 方法名+()
+        //定义形参 事件对象 方法名($event)
+        let vm = new Vue({
+        el:"#hjy",
+        data:{
+            n:1,
+            isActive:false,
+        },
+        methods:{
+            add:function (step=1) {
+                console.log(this.n);
+                this.n+=step;
+            },
+            enter:function () {
+                this.isActive=true;
+            },
+            leave:function () {
+                this.isActive=false;
+            },
+            fn:function(){
+                alert(1)
+            },
+            fn1:function (e) {
+                console.log(e);
+            },
+            fn2:function (e) {
+                console.log(e);
+            }
+        }
+    });
+    console.log(vm);
+    </script>
+
+</html>

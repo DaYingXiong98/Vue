@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .demo{
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+    }
+    .active1{
+        background-color: seagreen;
+    }
+</style>
+<body>
+    <div id="hz">
+        <!--普通的类名绑定-->
+        <div :class="name1"></div>
+        <!--绑定多个类名-->
+        <div :class="name2"></div>
+        <div :class="['item',name3]"></div>
+        <!--用对象的方式绑定某个需要切换的类名-->
+        <div :class="{active:state1}"></div>
+        <!--有固定的类名+需要切换的类名（轮播图中）-->
+        <div :class="['item',{active:state1}]"></div>
+
+        <div :class="['demo',{active1:state2}]" @click="fn"></div>
+
+        <div :style="styleObj"></div>
+
+        <div :style="[styleObj,styleObj2]"></div>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#hz",
+        data:{
+            name1:"one",
+            name2:["one two"],
+            name3:"active",
+            state1:true,
+            state2:false,
+            styleObj:{
+                width:"100px",
+                height:"100px",
+                backgroundColor:"red"
+            },
+            styleObj2:{
+                border:"1px solid blue"
+            },
+        },
+        methods:{
+          fn:function () {
+              this.state2=true;
+          }  
+        }
+    })
+</script>
+</html>

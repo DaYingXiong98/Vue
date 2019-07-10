@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in arr">
+                {{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="item of arr">
+                {{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(item,index) of arr">
+                <span>{{index}} => {{item}}</span>
+            </li>
+        </ul>
+
+        <table>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+            <tr v-for="obj in students">
+                <td>{{obj.name}}</td>
+                <td>{{obj.age}}</td>
+            </tr>
+        </table>
+
+        <ul>
+            <li v-for="(val,key,index) in obj" :key="index">
+                {{val}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#hjy",
+        data:{
+            arr:[11,22,33,44,55,66],
+            students:[{name:"zhangsan",age:19},{name:"lisi",age:20},{name:"wangwu",age:21}]
+        }
+    });
+    //遍历方式
+    let arr=[1,2,3,4];
+    for (let i=0;i<arr.length;i++){
+        console.log(arr[i]);
+    }
+    //i代表下标
+    for (let i in arr){
+        console.log(arr[i]);
+    }
+    arr.forEach(v=>{
+        console.log(v);
+    });
+    //ES6新增 for of
+    //i代表每一个值
+    for (let i of arr){
+        console.log(i);
+    }
+
+</script>
+</html>

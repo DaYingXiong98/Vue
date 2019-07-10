@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue选项卡</title>
+</head>
+<style>
+    .box{
+        width: 600px;
+        height: 500px;
+        border: 3px solid #5096e8;
+        margin: 0 auto;
+    }
+    .top{
+        width: 600px;
+        height: 50px;
+
+    }
+    .item{
+        width: 200px;
+        height: 50px;
+        float: left;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        background-color: #cccccc;
+    }
+    .item.active{
+        background-color: darkturquoise;
+        color: #ffffff;
+    }
+    .bottom{
+        width: 600px;
+        height: 350px;
+    }
+    .content{
+        width: 300px;
+        height: 350px;
+        text-align: center;
+        line-height: 350px;
+        display: none;
+    }
+    .content.active{
+        display: block;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="top">
+            <div :class="['item',{active:state===1}]" @click="state=1">1</div>
+            <div :class="['item',{active:state===2}]" @click="state=2">2</div>
+            <div :class="['item',{active:state===3}]" @click="state=3">3</div>
+        </div>
+        <div class="bottom">
+            <div :class="['content',{active:state===1}]">1</div>
+            <div :class="['content',{active:state===2}]">2</div>
+            <div :class="['content',{active:state===3}]">3</div>
+        </div>
+    </div>
+</body>
+<!--Vue配置-->
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:".box",
+        data:{
+            state:1,
+
+        }
+    })
+</script>
+
+</html>

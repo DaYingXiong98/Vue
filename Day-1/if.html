@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+<!--这是一个被Vue读取执行的模版文件 template-->
+    <div id="hjy">
+        <div v-if="0>1">
+            hello vue
+        </div>
+
+        <div v-if="show">
+            hello world
+        </div>
+
+        <div v-show="show">
+            v-show
+        </div>
+
+        <div>
+            <span v-if="sex===1">男</span>
+            <span v-else>女</span>
+        </div>
+
+        <div>
+            <span v-if="state===0">未付款</span>
+            <span v-else-if="state===1">已付款</span>
+            <span v-else-if="state===2">已发货</span>
+            <span v-else-if="state===3">已签收</span>
+            <span v-else>ERROR</span>
+        </div>
+
+        <template v-if="show">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+        </template>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // v-if v-else v-else-if v-show
+    // v-if v-show 都是显示隐藏元素 如果当前绑定的是假值 v-if:不渲染 v-show:通过css隐藏
+    new Vue({
+        el:"#hjy",
+        data:{
+            show:true,
+            sex:2,
+            state:3,
+        }
+    })
+</script>
+</html>

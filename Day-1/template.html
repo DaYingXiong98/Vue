@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>{{message}}</div>
+
+    <div v-html="content"></div>
+
+    <div v-text="content"></div>
+
+    <div v-bind:title="title">鼠标停留查看效果</div>
+
+    <ul>
+<!--        各类运算以及三元运算、函数调用、-->
+        <li>{{num}}</li>
+        <li>{{num++}}</li>
+        <li>{{num>5}}</li>
+        <li>{{num&&5}}</li>
+        <li>{{num>4?'是':'否'}}</li>
+        <li>{{message.toUpperCase()}}</li>
+        <li v-bind:title="num*10">绑定的属性</li>
+        <li>{{fn()}}</li>
+    </ul>
+    <div v-bind:[attr]="title">动态属性</div>
+<!--    属性绑定简写： 事件绑定简写@-->
+    <div :[attr]="title">缩写</div>
+
+    <input type="button" @click="test" value="click me!">
+
+</div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    // 指令
+    // v-html 更新元素的 innerHtml
+    // v-text 更新元素的 textContent
+    // v-bind 绑定元素的属性(src href title class id style..)
+    // 表达式可用在内容的输出或者属性的绑定
+    new Vue({
+        el:"#app",
+        data:{
+            message:"hello world",
+            content:"<h1>标题</h1>>",
+            title:"你好",
+            num:6,
+            attr:"title"
+        },
+        methods:{
+            fn:function () {
+                return "你好";
+            }
+        }
+    });
+</script>
+</html>

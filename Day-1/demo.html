@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <img v-bind:src="thumb" alt="">
+        <ul>
+            <li v-for="item in content">
+                {{item.title}}
+            </li>
+        </ul>
+        <div v-if="show">
+            太SHOW了
+        </div>
+        <input type="button" value="toggle" v-on:click="fn">
+        <input type="text" v-model="val">
+        {{val}}
+        <my-btn></my-btn>
+        <my-btn></my-btn>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    Vue.component("my-btn",{
+        template:"<div>按钮组件</div>"
+    });
+    let vm = new Vue({
+        el:"#app", //实例的挂载点
+        data:{      //需要在页面中渲染的数据或者状态
+            message:"hello world",
+            thumb:"https://cn.vuejs.org/images/tencent-ad.png",
+            content:[{title:'123456'}],
+            show:false,
+            val:"hello world"
+        },
+        methods:{
+            fn:function () {
+                this.show=!this.show
+            }
+        }
+
+    });
+    console.log(vm);
+
+</script>
+</html>
