@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+</head>
+<body>
+<!--双向数据绑定-->
+<form action="">
+    <input type="text" v-model.lazy="val1">
+    <textaera v-model="val2">123456</textaera>
+    <input type="checkbox" name="read" value="1" v-model="val3">
+
+    <input type="radio" name="sex" value="男" v-model="val4">
+    <input type="radio" name="sex" value="女" v-model="val4">
+
+    <input type="checkbox" name="hobby" value="唱"   v-model="val5">
+    <input type="checkbox" name="hobby" value="跳"   v-model="val5">
+    <input type="checkbox" name="hobby" value="RAP" v-model="val5">
+    <input type="checkbox" name="hobby" value="篮球" v-model="val5">
+
+    <select name="city" v-model="val6">
+        <option value="001">珠海</option>
+        <option value="002">柳州</option>
+        <option value="003">太原</option>
+
+    </select>
+
+    <select name="flower" v-model="val7" multiple>
+        <option value="red">红色</option>
+        <option value="blue">蓝色</option>
+        <option value="yellow">黄色</option>
+    </select>
+
+
+    <div>{{val}}</div>
+</form>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"form",
+        data:{
+            val1:"hello",
+            val2:"world",
+            val3:true,
+            val4:"男",
+            val5:["唱"],
+            val6:"003",
+            val7:["red","blue"]
+        },
+        methods:{
+            inputHandler(e){
+                var newValue=e.target.value;
+                this.val=newValue;
+            }
+        }
+    })
+</script>
+</html>

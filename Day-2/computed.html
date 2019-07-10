@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <div>{{reverseMessage}}</div>
+        <div>{{reverseMessage}}</div>
+        <div>{{reverseMessage}}</div>
+        <table>
+            <caption>全部成绩</caption>
+            <tr>
+                <th>姓名</th>
+                <th>成绩</th>
+            </tr>
+            <tr v-for="item in grades">
+                <td>{{item.name}}</td>
+                <td>{{item.grade}}</td>
+            </tr>
+        </table>
+        <table>
+            <caption>挂科名单</caption>
+            <tr>
+                <th>姓名</th>
+                <th>成绩</th>
+            </tr>
+            <tr v-for="item in grades2">
+                <td>{{item.name}}</td>
+                <td>{{item.grade}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"hello",
+            grades:[{name:"zhangsan",grade:59},
+                     {name:"lisi",grade:69},
+                        {name:"wangwu",grade:79},
+                    ]
+        },
+        computed:{
+            //计算属性比起方法来说只用调用一次
+            reverseMessage(){
+                return this.message.split("").reverse().join();
+            },
+            grades2(){
+                return this.grades.filter(v=>v.grade<60);
+            }
+        },
+    })
+</script>
+</html>
